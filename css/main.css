@@ -82,12 +82,8 @@ body {
     border-top: 20px solid #e44d26;
 }
 
-.header-container{
-
-}
-.footer-container{
-
-}
+.header-container,
+.footer-container,
 .main aside {
     background: #f16529;
 }
@@ -115,8 +111,7 @@ nav a {
     font-weight: bold;
 
     color: white;
-    background-image: url(../img/menu_hover.png);
-    background-repeat: no-repeat;
+    background: #e44d26;
 }
 
 nav a:hover,
