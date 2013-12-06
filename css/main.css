@@ -106,7 +106,6 @@ nav {
     margin: 0%;
 }
 
-/*
 nav ul {
     margin: 0;
     padding: 0;
@@ -115,14 +114,17 @@ nav ul {
 nav a {
     display: block;
     margin-bottom: 10px;
-    padding: 15px 0;
+    padding: 5%;
+    margin: 5px 5px;
+    border: 3px solid #130294;
+    border-radius: 25px;
 
     text-align: center;
     text-decoration: none;
     font-weight: bold;
 
-    color: white;
-    background: #e44d26;
+    color: #130294;
+    background: #6633FF;
 }
 
 nav a:hover,
@@ -133,7 +135,6 @@ nav a:visited {
 nav a:hover {
     text-decoration: underline;
 }
-*/
 /* ==============
     MOBILE: Main
    ============== */
@@ -159,6 +160,14 @@ nav a:hover {
 .footer-container footer {
     color: white;
     padding: 20px 0;
+}
+
+.minipic{
+    width: 100%;
+}
+
+.linkSeeMore{
+    text-align: right;
 }
 
 /* ===============
