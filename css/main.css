@@ -110,18 +110,18 @@ nav ul {
     margin: 0;
     padding: 0;
 }
-
 nav a {
     display: block;
     margin-bottom: 10px;
     padding: 5%;
     margin: 5px 5px;
     border: 3px solid #130294;
-    border-radius: 25px;
+    border-radius: 20px;
 
     text-align: center;
     text-decoration: none;
     font-weight: bold;
+    font-size: 20px;
 
     color: #130294;
     background: #6633FF;
