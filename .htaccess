@@ -19,285 +19,98 @@ RewriteEngine On
 # descomentar esta línea y configurar el URL-path
 # RewriteBase URL-path
 
-RewriteCond %{HTTP_USER_AGENT}	^Mozilla.*	[nocase,ornext]
-RewriteCond %{HTTP_COOKIE}      %{TIME_YEAR}
-RewriteRule "alguna regla de rescritura"
-
-RewriteCond %{HTTP_HOST}      ^g01.ceophp.net$ [NC]
+RewriteCond %{HTTP_HOST}      ^(www\.)?g01.ceophp.net$ [NC]
 RewriteRule (.*) http://bikes.ceophp.net [R=301]
 
+##########################
+# Errores customizados.
+##########################
+ErrorDocument 404 /404.html
 
 ##########################
-# Directiva RewriteCond
+# Expiracion de cache
 ##########################
-# Sirve para especificar qué condiciones deben cumplir los URLs para que puedan
-# ser alterados con RewriteRule.
-#
-# Una o mas directivas RewriteCond pueden preceder a una directiva RewriteRule.
-#
-# Syntaxis: RewriteCond CadenaDePrueba PatronDePrueba
-# 	CadenaDePrueba es un texto que puede armarse de varias formas:
-#		- con URLs
-#		- con variables del servidor
-#		- expresiones regulares
-#
-#	PatronDePrueba es una PCRE que se prueba contra la CadenaDePrueba
-#	El PatronDePrueba puede tener banderas que modifican su comportamiento.
-#
-# VALORES ADICIONALES DISPONIBLES PARA CadenaDePrueba
-#####################################################
-# Backreferences de la RewriteRule $N (1<N<9)
-#	Brinda acceso a subpatrones (entre paréntesis) de la RewriteRule
-#
-# Backreferences de la RewriteCond %N (1<N<9)
-#	Brinda acceso a subpatrones (entre paréntesis) de la última RewriteCond
-#	coincidió en el conjunto actual de RewriteConds.
-#
-# Variables del servidor, %{NOMBRE_DE_VARIABLE}
-#	Permite acceder a datos del estado del servidor, estado de la conexión, fecha, etc.
-# 	Headers HTTP:
-#		HTTP_USER_AGENT
-#		HTTP_REFERER
-#		HTTP_COOKIE
-#		HTTP_FORWARDED
-#		HTTP_HOST
-#		HTTP_PROXY_CONNECTION
-#		HTTP_ACCEPT
-#	Datos internos del servidor
-#		DOCUMENT_ROOT
-#		SERVER_ADMIN
-#		SERVER_NAME
-#		SERVER_ADDR
-#		SERVER_PORT
-#		SERVER_PROTOCOL
-#		SERVER_SOFTWARE
-#	Conección y solicitud
-#		REMOTE_ADDR
-#		REMOTE_HOST
-#		REMOTE_PORT
-#		REMOTE_USER
-#		REMOTE_IDENT
-#		REQUEST_METHOD
-#		SCRIPT_FILENAME - igual que REQUEST_FILENAME
-#		PATH_INFO
-#		QUERY_STRING
-#		AUTH_TYPE
-#	Fecha y hora
-#		TIME_YEAR
-#		TIME_MON
-#		TIME_DAY
-#		TIME_HOUR
-#		TIME_MIN
-#		TIME_SEC
-#		TIME_WDAY
-#		TIME
-#	Especiales del mod_rewrite
-#		API_VERSION - versión de la API de apache con el módulo rewrite
-#		THE_REQUEST - la línea completa con el request; GET /index.html HTTP/1.1
-#		REQUEST_URI - el recurso solicitado: /index.html
-#		REQUEST_FILENAME - el path del archivo solicitado o el REQUEST_URI
-#		IS_SUBREQ - "true" o "false" indicado si es un sub-request solicitado por un módulo
-#		HTTPS - "on" o "off" según la conexión sea cifrada o no.
-#		ENV:variable - variable de entorno
-#		SSL:variable - variable ssl: SSL_CIPHER_USEKEYSIZE
-#		HTTP:header - donde "header" es cualquier header de HTTP, da el valor del header.
-#		LA-U:variable - Look Ahead Url, genera un subrequest interno de tipo URL para
-#			determinar el valor de una variable que todavía no está fijado.
-#		LA-F:variable - Look Ahead File, genera un subrequest interno basado en el nombre
-#			del archivo para determinal el valor final de "variable".
-#
-# Especificación del PatronDePrueba
-###################################
-#
-#	expresión_PCRE   [bandera1,bandera2,bandera3]
-#
-# Es una PCRE que puede seguirse con algunas banderas encerradas entre corchetes y 
-# además con las siguientes modificaciones:
-#
-# - Preceder la secuencia con "!" implica que el patrón no debe coincidir.
-# - "<PatronDePrueba", donde PatronDePrueba es una cadena simple de caracteres, verifica si la
-#   CadenaDePrueba es lexicográficamente "menor" que el patrón.
-# - ">PatronDePrueba", donde PatronDePrueba es una cadena simple de carateres, verifica si la
-#   CadenaDePrueba es lexicográficamente "mayor" que el patrón.
-# - "=CadenaDePrueba", lexicográficamente "igual" que el patrón.
-# - "-d", prueba si la CadenaDePrueba es una carpeta y si existe o no.
-# - "-f", prueba si la CadenaDePrueba es un archivo y si existe o no.
-# - "-s", idem anterior pero el archivo tiene que tener tamaño mayor a 0.
-# - "-l", prueba si la CadenaDePrueba es un enlace simbólico y si existe o no.
-# - "-x", prueba si la CadenaDePrueba es un archivo con permisos de ejecución y si existe o no.
-# - "-F", prueba si la CadenaDePrueba es un archivo pero vía un sub-request, lo cual pasa por
-#	todos los controles del servidor, impacta en la performance.
-# - "-U", prueba si la CadenaDePrueba es un URL válido, vía un sub-request, lo cual pasa por
-#	todos los controles del servidor, impacta en la performance.
-# - los últimos 7 controles pueden precederse de un "!" para negar su significado.
-#
-# Banderas del PatronDePrueba
-#############################
-#
-# - nocase|NC, no case, vuelve el patrón y la CadenaDePrueba case-insensitive, cuidado que no
-#	afecta los controles de archivos o carpetas: [NC], [nocase]
-# - ornext|OR, genera un OR con las RewriteCond (lo normal es AND): [OR], [ornext]
-# - novary|NV.
-#
-# Ejemplo de RewriteCond
-########################
-#	RewriteCond %{HTTP_USER_AGENT}	^Mozilla.*	[nocase,ornext]
-#	RewriteCond %{HTTP_COOKIE}      %{TIME_YEAR}
-#	RewriteRule "alguna regla de rescritura"
-#
-########################
-# Directiva RewriteRule
-########################
-#
-# Es la verdadera orden que realiza la re-escritura del URL solicitado.
-#
-# Sintaxis:
-#	RewriteRule Patron Sustitucion [banderas]
-#
-# El orden en que se definen es importante, se aplican en el orden que se escriben
-# en el archivo de configuración.
-# El Patron es una PCRE.
-# El Patron se verifica contra la parte del URL que está después del dominio y el puerto y
-# antes que el QueryString. Para verificar el URL completo usar las RewriteCond necesarias.
-# El "!" precediendo el Patron se puede usar para negar la coincidencia del mismo, pero esto
-# impide usar las backreferences $N.
-# Por omisión el QueryString no se modifica. Para modificarlo poner en la Sustitucion un "?"
-# seguido del QueryString deseado, para eliminarlo solo poner el "?".
-#
-# Variantes de "Sustitucion"
-############################
-#
-# La Sustitucion de una RewriteRule es la cadena que reemplaza el camino-URL original que fue
-# verificada por el Patron. La Sustitucion puede ser alguna de:
-#
-# - file-system path
-#   Designa la ubicación en el sistema de archivos del recurso que debe ser enviado al cliente.
-# - URL path
-#   Un camino relativo al DocumentRoot
-# - Absolute URL
-#   Un nuevo URL absoluto, algo con http://www.......
-# - - (dash, guión)
-#   Un guión indica que no debe realizarse ninguna sustitución, sirve para pasar una bandera
-#   sin cambiar el path.
-#
-# La cadena Sustitucion puede tener además:
-# - Backreferences ($N) al patrón de la RewriteRule.
-# - Backreferences (%N) al patrón de la última RewriteCond que coincidió.
-# - Variables del servidor (%{VARIABLE})
-# - Fuciones de mapeo (${mapname:clave|default})
-#   
-#
-# 
-# Banderas del RewriteRule
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+
+  ExpiresDefault                          "access plus 2 weeks"
+
+  ExpiresByType text/html                 "access plus 0 seconds"
+
+  ExpiresByType image/gif                 "access plus 2 weeks"
+  ExpiresByType image/png                 "access plus 2 weeks"
+  ExpiresByType image/jpg                 "access plus 2 weeks"
+  ExpiresByType image/jpeg                "access plus 2 weeks"
+
+  ExpiresByType font/truetype             "access plus 2 weeks"
+  ExpiresByType font/opentype             "access plus 2 weeks"
+  ExpiresByType application/x-font-woff   "access plus 2 weeks"
+  ExpiresByType image/svg+xml             "access plus 2 weeks"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+  ExpiresByType text/css                  "access plus 1 weeks"
+  ExpiresByType application/javascript    "access plus 1 weeks"
+  ExpiresByType text/javascript           "access plus 2 weeks"
+
+  <IfModule mod_headers.c>
+    Header append Cache-Control "public"
+  </IfModule>
+   
+</IfModule>
+
 ##########################
-#
-# - "B" (escapar backreferences)
-# - "chain|C" (encadenada con la siguiente regla). Si una regla coincide entonces aplicar la
-#   siguiente, esto es lo normal. Lo que cambia es que si la regla con la bandera "chain" no
-#   coincide entonces se descartan la regla siguiente. Se pueden encadenar varias reglas.
-# - "cookie|CO=name:val:domain[:lifetime[:path[:secure[:httponly]]]] (set cookie)
-#   Sirve para setear una cookie.
-# - "discardpathinfo|DPI" (discard PATH_INFO)
-#   Afecta el path cuando se ejecutan varias reglas.
-# - "env|E=var[:val]" (set variable de entorno)
-#   Setea una variable de entorno, se pueden usar backreferences, se puede usar varias veces.
-# - "forbidden|F" (forzar un URL prohibido), envía un código 403 de respuesta.
-# - "gone|G" (URL "ido"), envía un código 401 de respuesta.
-# - "last|L" (última regla), detiene el proceso de re-escritura.
-# - "next|N" (próximo round), empezar el proceso de re-escritura de nuevo pero con el URL
-#   obtenido en el primer proceso, no el URL original.
-# - "nocase|NC" (case insensitive)
-# - "noescape|NE" (no escapar el URI de salida). No realiza la sustitución de caracteres
-#   especiales en la salida (%, $, etc.)
-# - "nosubreq|NS" (no usar subrequests).
-#   No procesar la regla si el request es un sub-request interno.
-# - "proxy|P" (forzar el proxy).
-#   Pasar el request al módulo "proxy".
-# - "passthrough|PT".
-# - "qsappend|QSA" (query string append) sirve para agregar la Sustitucion al QueryString en
-#   lugar de sustituirlo.
-# - "redirect|R[=code]" (forzar la redirección). Envía código 302 por omisión o el que se
-#   especifique.
-# - "skip|S=num" (saltear la siguiente(s) regla(s)).
-# - type|T=MIME-type" (forzar el tipo MIME).
-#   Sirve para setear el "content type" basado en alguna condición.
-#
+# Compresion de archivos
 ##########################
-# Directiva RewriteMap
-##########################
-#
-# Define una función de mapeo de URLs.
-# Sintaxis:
-#
-#	RewriteMap NombreMapa TipoMapa:OrigenDelMapa
-#
-# Ejemplo de uso:
-#
-#	RewriteMap mapaEjemplo txt:/camino/al/mapa.txt
-#	RewriteRule ^/ex/(.*)  ${mapaEjemplo:$1}
-#
-# ESTA DIRECTIVA NO PUEDE USARSE EN EL CONTEXTO DEL .htaccess
-# DEBE USARSE EN EL CONTEXTO DE LA CONFIGURACIÓN GLOBAL DEL
-# SERVIDOR O EN UN VIRTUALHOST.
-#
-# EL MAPA DEFINIDO EN EL CONTEXTO DEL SERVIDOR O DEL VIRTUALHOST
-# SÍ PUEDE UTILIZARSE EN EL CONTEXTO DEL .htaccess
-#
-# Combinaciones de TipoMapa y OrigenDeMapa
-##########################################
-#
-# - TipoMapa: txt
-#   OrigenDelMapa: camino Unix a archivo válido.
-#
-#   El archivo de texto debe tener en cada línea el camino que se desea re-escribir y la Sustitucion.
-#   Las líneas que empiezan con "#" son comentarios.
-#	Ejemplo: /camino/viejo/al/archivo   /camino/nuevo/al/archivo
-#
-# - TipoMapa: rnd
-#   OrigenDelMapa: camino Unix a archivo válido.
-#
-#   Idem anterior pero puede haber varios caminos nuevos separados por "|"
-#	Ejemplo: /camino/viejo   /camino1|/camino2|/camino3
-#
-# - TipoMapa: dbm[=tipo]
-#   OrigenDelMapa: camino Unix a archivo válido.
-#
-#   Idem primero pero con un archivo indexado.
-#
-# - TipoMapa: int
-#   OrigenDelMapa: función interna del Apache
-#
-#   Utiliza funciones internas del apache para cambiar el URL viejo:
-#	toupper: convertir todas las letras a mayúsculas
-#	tolower: convertir todas las letras a minúsculas
-#	escape: traducir caracteres especiales a códigos hexadecimales
-#	unescape: traducir códigos hexadecimales a caracteres especiales
-#
-# - TipoMapa: prg
-#   OrigenDelMapa: camino Unix a un archivo válido
-#
-#   El archivo de texto es un programa en cualquier lenguaje, debe ser ejecutable:
-#	binario: programa compilado ejecutable.
-#	script: debe comenzar con "#!/camino/al/interprete"
-#
-#   El programa se inicia una sola vez cuando se levanta el servidor web, no se arranca
-#   con cada solicitud.
-#   El programa se comunica con el Apache vía los manejadores "stdin" y "stdout".
-#   El programa recibe en "stdin" una cadena de texto terminada en "newline".
-#   El programa debe enviar al "stdout" una cadena de texto terminada en "newline" o
-#   cuatro caracteres NULL indicando que falló.
-#
-#   Ejemplo sencillo en PHP que no modifica el URL:
-#	#!/usr/bin/php5
-#	while ($input = fgets(STDIN)) {
-#		echo $input;
-#	}
-#
-#
+<IfModule mod_deflate.c>
+	SetOutputFilter DEFLATE
+
+	# Don't compress binaries
+	SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|iso|tar|bz2|sit|rar) no-gzip dont-vary
 
 
 
+	# Don't compress images
+	SetEnvIfNoCase Request_URI .(?:gif|jpe?g|jpg|ico|png)  no-gzip dont-vary
 
 
 
+	# Don't compress PDFs
+	SetEnvIfNoCase Request_URI .pdf no-gzip dont-vary
 
+
+
+	# Don't compress flash files (only relevant if you host your own videos)
+	SetEnvIfNoCase Request_URI .flv no-gzip dont-vary
+
+
+
+	# Netscape 4.X has some problems
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+
+
+	# Netscape 4.06-4.08 have some more problems
+	BrowserMatch ^Mozilla/4.0[678] no-gzip
+
+
+
+	# MSIE masquerades as Netscape, but it is fine
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+
+
+	# Make sure proxies don't deliver the wrong content
+	Header append Vary User-Agent env=!dont-vary
+
+	AddOutputFilterByType DEFLATE text/plain
+	AddOutputFilterByType DEFLATE text/html
+	AddOutputFilterByType DEFLATE text/xml
+	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE application/xhtml+xml
+	AddOutputFilterByType DEFLATE application/rss+xml
+	AddOutputFilterByType DEFLATE application/javascript
+	AddOutputFilterByType DEFLATE application/x-javascript
+
+</IfModule>
