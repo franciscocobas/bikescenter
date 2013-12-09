@@ -3,3 +3,5 @@
 User-agent: *
 Disallow: /README.md
 Disallow: /.htaccess
+Disallow: /404.html
+Disallow: /500.html

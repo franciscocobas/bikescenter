@@ -410,7 +410,7 @@ nav a:hover {
 .InputsForm input{
     float: right;
     width: 70%;
-    margin-top: -24px;
+    margin-top: 0px;
 }
 
 .comentario-default{
@@ -422,7 +422,6 @@ nav a:hover {
 
 .comentario{
     color: black;
-    font-style: none;
     width: 100%;
     height: 190px;
 }
@@ -675,7 +674,7 @@ nav a:hover {
         padding-top: 20px;
         display: block;
         font-style: italic;
-        font-weight: none;
+        font-weight: normal;
     }
     
     .descripcion .nombre-articulo{
@@ -736,6 +735,9 @@ nav a:hover {
         margin: -47% 7% 0% 0%;
     }
 
+    .InputsForm input {
+        width: 75%;
+    }
 
     .main-container-contactenos{
         width: 95%;
@@ -752,7 +754,7 @@ nav a:hover {
         WIDE: Footer.
         ============ */
    #align-footer{
-        padding: 0px auto;
+        padding: 0px;
         height: 150px;
    }
 
@@ -954,6 +956,10 @@ nav a:hover {
         width: 40%;
         border: 1px solid black;
         margin: 5%;
+    }
+
+    .InputsForm input {
+        width: 80%;
     }
 }
 

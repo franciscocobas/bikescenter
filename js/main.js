@@ -8,5 +8,9 @@ $(document).ready(function(){
 		textarea.removeClass("comentario-default");
 		textarea.addClass("comentario");
 	});
+
+	$("#item-catalogo").on("click",function(){
+		_gaq.push(['_trackEvent', 'Nav', 'Catalogo', '/catalogo.html']);
+	});
 });
 
