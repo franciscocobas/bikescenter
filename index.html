@@ -6,6 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+        <meta name="google-site-verification" content="PCLbl9BSOiYvAmYRBUeMDeks2w7wXtGuosW6NXp9CVw" />
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -36,14 +37,29 @@
     <body>
 
         <div class="header-container">
+             <div class="buscador"> <!-- - - - - - - BUSCADOR embebido  - - - - - -->
+                <script>
+                  (function() {
+                    var cx = '008667399770512951701:3f4d00yfx0k';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                        '//www.google.com/cse/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+                </script>
+                <gcse:searchbox></gcse:searchbox>
+            </div>
             <header class="wrapper clearfix wrapper-menu">
                 <h1 class="title"><a href="/"><img src="c:/users/pancho/desktop/bikecenter/img/bikecenter_logo.jpg" alt="Bikecenter"></a></h1>
                 <nav>
                     <ul>
-                        <li><a href="#">Catálogo</a></li>
-                        <li><a href="#">Promociones</a></li>
-                        <li><a href="#">Sucursales</a></li>
-                        <li><a href="#">Contáctenos</a></li>
+                      <li><a href="/catalogo.html" onClick="_gag.push(['_trackEvent', 'Nav', 'Catalogo', 'catalogo.html']);">Catálogo</a></li>
+                      <li><a href="/promociones.html" onClick="_gag.push(['_trackEvent', 'Nav', 'Promociones', 'promociones.html']);">Promociones</a></li>
+                      <li><a href="/sucursales.html" onClick="_gag.push(['_trackEvent', 'Nav', 'Sucursales', 'sucursales.html']);">Sucursales</a></li>
+                      <li><a href="contacto.html" onClick="_gag.push(['_trackEvent', 'Nav', 'Contacto', 'contacto.html']);">Contáctenos</a></li>
                     </ul>
                 </nav>
             </header>
@@ -51,6 +67,10 @@
 
         <div class="main-container">
             <div class="main clearfix wrapper-article">
+                <div id="resultadosBuscador">
+                    <h3>Resultados de la búsqueda</h3>
+                    <gcse:searchresults></gcse:searchresults>
+                </div>
                 <h1>Productos más vendidos</h1>
                 <article>
                     <section class="section">

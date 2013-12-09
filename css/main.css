@@ -21,7 +21,7 @@ body{
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
 
-/*
+
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
@@ -31,7 +31,7 @@ body{
     background: #b3d4fc;
     text-shadow: none;
 }
-*/
+
 hr {
     display: block;
     height: 1px;
@@ -75,6 +75,7 @@ body {
     width: 90%;
     margin: 0 5%;
 }
+
 
 /* ===================
     ALL: Orange Theme
@@ -129,7 +130,6 @@ body {
 nav {
     width: 100%;
 }
-
 
 .wrapper-menu{
     width: 100%;
@@ -245,7 +245,6 @@ nav a:hover {
 }
 
 
-<<<<<<< HEAD
 /* ==========================================================================
     Página 404
    ========================================================================== */
@@ -264,11 +263,7 @@ nav a:hover {
     background-color: cyan;
     color: darkblue;
 }
-=======
 
-
-
->>>>>>> c3b65dbbbd68f8b10b9224a18568443eccb14d1d
 
 
 /* ==========================================================================
@@ -276,17 +271,11 @@ nav a:hover {
    ========================================================================== */
 
 
-    
-
-<<<<<<< HEAD
+ 
     nav li:last-child a {
         margin-right: 0;
     }
     
-
-=======
->>>>>>> c3b65dbbbd68f8b10b9224a18568443eccb14d1d
-
 
     
 
@@ -309,6 +298,15 @@ nav a:hover {
         width:30%;
         padding-left: 2%;
     }
+
+
+.buscador {
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 40%;
+}
+
 /* ============
     WIDE: Menu
    ============ */
@@ -413,7 +411,7 @@ nav a:hover {
     }
 
 
-    /* ========================
+/* ========================
     INTERMEDIATE: IE Fixes
    ======================== */
 
@@ -431,19 +429,10 @@ nav a:hover {
 
 
 
-
-
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-
-    
-
-
-
-    
 
 @media only screen and (min-width: 1140px) {
 
@@ -452,7 +441,8 @@ nav a:hover {
    =============== */
 
     .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
+     /* width: 1026px;  /* 1140px - 10% for margins */
+        width: 100%;
         margin: 0 auto;
     }
 /* ===============
@@ -462,10 +452,10 @@ nav a:hover {
         margin-left: 0px;
     }
     nav {
-        width: 60%;
+        width: 80%;
     }
     nav li a{
-        width: 20%;
+        min-width: 19%;
     }
 }
 
