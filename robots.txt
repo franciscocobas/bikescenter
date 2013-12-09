@@ -1,3 +1,5 @@
 # robotstxt.org/
 
 User-agent: *
+Disallow: /README.md
+Disallow: /.htaccess

@@ -22,6 +22,9 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST}      ^(www\.)?g01.ceophp.net$ [NC]
 RewriteRule (.*) http://bikes.ceophp.net [R=301]
 
+RewriteCond %{HTTP_HOST}      ^(www\.).+ [NC]
+RewriteRule (.*) http://bikes.ceophp.net
+
 ##########################
 # Errores customizados.
 ##########################
@@ -34,24 +37,24 @@ ErrorDocument 404 /404.html
 <IfModule mod_expires.c>
   ExpiresActive on
 
-  ExpiresDefault                          "access plus 2 weeks"
+  ExpiresDefault                          "access plus 1 minute"
 
   ExpiresByType text/html                 "access plus 0 seconds"
 
-  ExpiresByType image/gif                 "access plus 2 weeks"
-  ExpiresByType image/png                 "access plus 2 weeks"
-  ExpiresByType image/jpg                 "access plus 2 weeks"
-  ExpiresByType image/jpeg                "access plus 2 weeks"
+  ExpiresByType image/gif                 "access plus 1 minute"
+  ExpiresByType image/png                 "access plus 1 minute"
+  ExpiresByType image/jpg                 "access plus 1 minute"
+  ExpiresByType image/jpeg                "access plus 1 minute"
 
-  ExpiresByType font/truetype             "access plus 2 weeks"
-  ExpiresByType font/opentype             "access plus 2 weeks"
-  ExpiresByType application/x-font-woff   "access plus 2 weeks"
-  ExpiresByType image/svg+xml             "access plus 2 weeks"
-  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+  ExpiresByType font/truetype             "access plus 1 minute"
+  ExpiresByType font/opentype             "access plus 1 minute"
+  ExpiresByType application/x-font-woff   "access plus 1 minute"
+  ExpiresByType image/svg+xml             "access plus 1 minute"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 minute"
 
-  ExpiresByType text/css                  "access plus 1 weeks"
-  ExpiresByType application/javascript    "access plus 1 weeks"
-  ExpiresByType text/javascript           "access plus 2 weeks"
+  ExpiresByType text/css                  "access plus 1 minute"
+  ExpiresByType application/javascript    "access plus 1 minute"
+  ExpiresByType text/javascript           "access plus 1 minute"
 
   <IfModule mod_headers.c>
     Header append Cache-Control "public"
@@ -65,44 +68,6 @@ ErrorDocument 404 /404.html
 <IfModule mod_deflate.c>
 	SetOutputFilter DEFLATE
 
-	# Don't compress binaries
-	SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|iso|tar|bz2|sit|rar) no-gzip dont-vary
-
-
-
-	# Don't compress images
-	SetEnvIfNoCase Request_URI .(?:gif|jpe?g|jpg|ico|png)  no-gzip dont-vary
-
-
-
-	# Don't compress PDFs
-	SetEnvIfNoCase Request_URI .pdf no-gzip dont-vary
-
-
-
-	# Don't compress flash files (only relevant if you host your own videos)
-	SetEnvIfNoCase Request_URI .flv no-gzip dont-vary
-
-
-
-	# Netscape 4.X has some problems
-	BrowserMatch ^Mozilla/4 gzip-only-text/html
-
-
-
-	# Netscape 4.06-4.08 have some more problems
-	BrowserMatch ^Mozilla/4.0[678] no-gzip
-
-
-
-	# MSIE masquerades as Netscape, but it is fine
-	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
-
-
-
-	# Make sure proxies don't deliver the wrong content
-	Header append Vary User-Agent env=!dont-vary
-
 	AddOutputFilterByType DEFLATE text/plain
 	AddOutputFilterByType DEFLATE text/html
 	AddOutputFilterByType DEFLATE text/xml
@@ -112,5 +77,5 @@ ErrorDocument 404 /404.html
 	AddOutputFilterByType DEFLATE application/rss+xml
 	AddOutputFilterByType DEFLATE application/javascript
 	AddOutputFilterByType DEFLATE application/x-javascript
-
+	
 </IfModule>
