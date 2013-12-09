@@ -11,9 +11,16 @@ textarea {
 }
 
 body{
+    font-family: 'Lato', Calibri, Arial, sans-serif;
     font-size: 1em;
+    color: #89867e;
+    background: #f9f9f9;
     line-height: 1.4;
 }
+
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+
 
 ::-moz-selection {
     background: #b3d4fc;
@@ -69,6 +76,7 @@ body {
     margin: 0 5%;
 }
 
+
 /* ===================
     ALL: Orange Theme
    =================== */
@@ -123,7 +131,6 @@ nav {
     width: 100%;
 }
 
-
 .wrapper-menu{
     width: 100%;
     margin: 0%;
@@ -172,6 +179,7 @@ nav a:hover {
 
 .main {
     padding: 30px 0;
+    border-radius: 1px solid box-shadow Black;
 }
 
 .main-container h1 {
@@ -237,8 +245,24 @@ nav a:hover {
 }
 
 
-
-
+/* ==========================================================================
+    Página 404
+   ========================================================================== */
+.bg {
+  background-color: #0000AA;
+  color: white;
+  margin-left: 28%;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+.bg a{
+    color: orange;
+}
+.bg a:hover{
+    background-color: cyan;
+    color: darkblue;
+}
 
 
 
@@ -247,9 +271,11 @@ nav a:hover {
    ========================================================================== */
 
 
+ 
+    nav li:last-child a {
+        margin-right: 0;
+    }
     
-
-
 
     
 
@@ -272,6 +298,15 @@ nav a:hover {
         width:30%;
         padding-left: 2%;
     }
+
+
+.buscador {
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 40%;
+}
+
 /* ============
     WIDE: Menu
    ============ */
@@ -329,7 +364,7 @@ nav a:hover {
 
     .section{
         height: 350px;
-        float: left;
+        margin: 0 auto;
     }
 
     .wrapper-article article{
@@ -376,7 +411,7 @@ nav a:hover {
     }
 
 
-    /* ========================
+/* ========================
     INTERMEDIATE: IE Fixes
    ======================== */
 
@@ -387,10 +422,10 @@ nav a:hover {
     .oldie nav a {
         margin: 0 0.7%;
     }
+    .bg {
+        padding: 0;
+    }
 }
-
-
-
 
 
 
@@ -399,12 +434,6 @@ nav a:hover {
    ========================================================================== */
 
 
-    
-
-
-
-    
-
 @media only screen and (min-width: 1140px) {
 
 /* ===============
@@ -412,7 +441,8 @@ nav a:hover {
    =============== */
 
     .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
+     /* width: 1026px;  /* 1140px - 10% for margins */
+        width: 100%;
         margin: 0 auto;
     }
 /* ===============
@@ -422,10 +452,10 @@ nav a:hover {
         margin-left: 0px;
     }
     nav {
-        width: 60%;
+        width: 80%;
     }
     nav li a{
-        width: 20%;
+        min-width: 19%;
     }
 }
 
@@ -564,3 +594,5 @@ nav a:hover {
         page-break-after: avoid;
     }
 }
+
+
