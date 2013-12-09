@@ -364,7 +364,7 @@ nav a:hover {
 
     .section{
         height: 350px;
-        float: left;
+        margin: 0 auto;
     }
 
     .wrapper-article article{
