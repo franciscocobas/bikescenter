@@ -69,8 +69,11 @@ body {
     margin: 0 5%;
 }
 
+.bold{
+    font-weight: bold;
+}
 /* ===================
-    ALL: Orange Theme
+    ALL: Base Theme
    =================== */
 
 .header-container {
@@ -119,6 +122,15 @@ body {
 /* ==============
     MOBILE: Menu
    ============== */
+
+.buscador{
+    display: none;
+}
+
+.resultadosBuscador{
+    display: none;
+}
+
 nav {
     width: 100%;
 }
@@ -166,6 +178,60 @@ nav a:hover{
 nav a:hover {
     text-decoration: none;
 }
+
+/*===============
+    Articulo Menu
+   =============== */
+
+.menu{ 
+    float: left;
+    width: 100%;
+}
+
+/*===============
+    Sucursales Menu
+   =============== */
+
+.header-subpagina-sucursales h4{
+    float: right;
+    font-size: 27px;
+    padding: 17px 7px 0 0;
+}
+
+#imagen-sucursales h4{
+    float: right;
+    font-size: 26px;
+    padding-right: 30px;
+}
+
+
+/*===============
+    Promociones Menu
+   =============== */
+
+#imagen-promociones h4{
+    float: right;
+    font-size: 24px;
+    padding: 5%;
+}
+
+/*===============
+    Contactenos Menu
+   =============== */
+
+.header-subpagina-contactenos h4{
+    float: right;
+    font-size: 27px;
+    padding: 17px 7px 0 0;
+}
+
+#imagen-sucursales h4{
+    float: right;
+    font-size: 26px;
+    padding-right: 30px;
+}
+
+
 /* ==============
     MOBILE: Main
    ============== */
@@ -181,6 +247,7 @@ nav a:hover {
 
 .main-container #especificaciones{
     padding-left: 20px;
+    text-align: center;
 }
 
 .main article h2 {
@@ -228,6 +295,155 @@ nav a:hover {
     padding-right: 5px;
 }
 
+/*===============
+    Catalogo Main
+   =============== */
+
+.main-container-catalogo hr{
+    width: 90%;
+    margin:auto;
+}
+.main-container-catalogo li{
+    list-style: none;  
+    padding-top: 15px;
+    text-align: center;
+}
+
+.main-container-catalogo img{
+    width: 100px;
+    border:1px solid Black;
+    float: left;
+}
+
+.main-container-catalogo ul{
+    padding-left: 5%;
+}
+
+.main-container-catalogo label{
+    font-weight: bold;
+}
+
+.descripcionArticulo{
+    display: none;
+}
+/*===============
+    Promociones Main
+   =============== */
+
+.main-container-promociones{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.promociones-container{
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6%;
+    margin-bottom: 6%;
+    width: 250px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #6633FF;
+}
+
+.imgPromocion{
+    width: 80%;
+    height: auto;
+    border:2px solid #0A0A2A;
+    border-radius: 10px;
+}
+
+.contenido-liquidacion{
+    margin-bottom: 10px;
+}
+
+/*===============
+    Sucursales Main
+   =============== */
+.main-container-sucursales{
+    text-align: center;
+    
+}
+
+.sucursales-container{
+    color: #0A0A2A;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6%;
+    margin-bottom: 6%;
+    width: 250px;
+    height: auto;
+    box-shadow: 2px 2px 2px black;
+}
+
+.imagen-sucursal{
+    width: 80%;
+    height: auto;
+    border:2px solid #0A0A2A;
+    border-radius: 10px;
+}
+
+/*===============
+    Contacto Main
+   =============== */
+
+.primera-sucursal-contacto{
+    display: none;
+}
+.main-container-contactenos{
+    width: 90%;
+    border: 1px solid black;
+    margin: 5% 4%;
+}
+
+#formulario{
+    padding: 4%;
+}
+.InputsForm{
+    margin-bottom: 8%;
+}
+
+.InputsForm input{
+    float: right;
+    width: 70%;
+    margin-top: -24px;
+}
+
+.comentario-default{
+    color: grey;
+    font-style: italic;
+    width: 100%;
+    height: 190px;
+}
+
+.comentario{
+    color: black;
+    font-style: none;
+    width: 100%;
+    height: 190px;
+}
+
+.btnEnviar{
+    margin: 0px 35%;
+}
+
+#formulario label{
+    width: 100px;    
+
+}
+
+.ui-btn-inner{
+    display: none;
+}
+
+.btnEnviar input{
+    cursor: auto;
+}
+
 /* ===============
     ALL: IE Fixes
    =============== */
@@ -251,9 +467,7 @@ nav a:hover {
 
 
 
-    
 
-/*---------------------------------------------------------------*/
 @media only screen and (min-width: 750px) {
 
 /* ====================
@@ -306,6 +520,65 @@ nav a:hover {
         width: 65%;
         margin-top:100px;
     }
+    
+    /*===============
+        Articulo Menu
+        =============== */
+
+    #productoTitle{
+        display: none; 
+    }
+
+    #imagen{
+        width: 20%;
+    }
+
+    #imgArticulo{
+        width: 285px;
+        height: auto;
+    }
+
+    .menu{ 
+        width: 80%;
+    }
+
+    .nav-articulo{
+        width: 80%;
+    }
+
+
+    /*===============
+        Promociones Menu
+        =============== */
+    #imagen-promociones{
+        width: 20%;
+    }
+
+    .menu-promociones{
+        float: right;
+        width: 70%;
+    }
+
+    .menu-promociones nav{
+        width: 95%;
+    }
+    
+    /*===============
+        Sucursales Menu
+        =============== */
+    #imagen-sucursales{
+        width: 20%;
+    }
+
+    .menu-sucursales{
+        float: right;
+        width: 70%;
+    }
+
+    .menu-sucursales nav{
+        width: 95%;
+    }
+    
 
 /* ============
     WIDE: Main
@@ -356,9 +629,128 @@ nav a:hover {
         display: block;
     }
 
-/* ============
-    WIDE: Footer.
-   ============ */
+    /*===============
+        Articulo Main
+        =============== */
+
+
+    .section .picArticulo{
+        width: 100%;
+    }
+
+    .section-Articulo{
+        height: inherit;
+    }
+
+    .section-Articulo p{
+        height: inherit;
+    }
+
+    .wrapper-article-articulo{
+        margin-left: 215px;
+    }
+
+    .wrapper-article-articulo h1{
+        text-align: left;
+        padding-left: 115px;
+    }
+
+    .nav-subpagina{
+        width: 80%;
+    }
+
+    /*===============
+        Catalogo Main
+        =============== */
+
+    .main-container-catalogo img{
+        width: 200px;
+    }
+
+    .descripcion{
+        text-align: center;
+    }
+
+    .descripcionArticulo{
+        padding-top: 20px;
+        display: block;
+        font-style: italic;
+        font-weight: none;
+    }
+    
+    .descripcion .nombre-articulo{
+        font-weight: bold;
+    }
+
+    .main-container-catalogo li{
+        padding-bottom: 33px;
+    }
+
+
+    /* ============
+        Promociones Main
+        ============ */
+    #primera-promocion{
+        float: left;
+        margin-left: 19%;
+        margin-top: 0px;
+    }    
+
+    #segunda-promocion{
+        margin-left: 55%
+    }
+
+    /*===============
+        Sucursales Main
+        =============== */
+    .main-container-sucursales{
+        height: 450px;
+        margin-left: 4%;
+    }
+
+    .sucursales-container{
+        float: left;
+        margin: 50px 20px 0px 20px;
+    }
+
+    /*===============
+        Contacto Main
+        =============== */
+
+    .main-container-contactenos{
+        font-size: 18px;
+        color: white;
+        background-color: #6633FF;
+        width: 40%;
+        margin: 5% auto;
+        border: 2px solid black;
+        border-radius: 15px;
+        box-shadow: 2px 2px 2px black;
+    }
+
+    .primera-sucursal-contacto{
+        text-align: center;
+        display: block;
+        float: right;
+        float: right;
+        margin: -47% 7% 0% 0%;
+    }
+
+
+    .main-container-contactenos{
+        width: 95%;
+    }
+
+    #formulario{
+        padding: 2%;
+        width: 40%;
+        border: 1px solid black;
+        margin: 5%;
+    }
+
+    /* ============
+        WIDE: Footer.
+        ============ */
    #align-footer{
         padding: 0px auto;
         height: 150px;
@@ -419,13 +811,149 @@ nav a:hover {
     Maximal Menu
    =============== */
     .wrapper-menu{
-        margin-left: 0px;
+        width: 90%;
+        margin-left: auto;
     }
+
     nav {
-        width: 60%;
+        width: 65%;
     }
     nav li a{
+        width: 18%;
+    }
+
+    .buscador{
+        display: block;
+        float: right;
+        margin-right: 40px;
+        margin-top: 25px;
+        width: 40%;
+    }
+
+    .resultadosBuscador{
+        border: 2px solid #6633FF;
+        width: 85%;
+        margin: 0% auto;
+        padding: 2%;
+        display: block;
+        border-radius: 10px;
+        max-height: 500px;
+    }
+
+    /*===============
+        Sucursales Menu
+        =============== */
+
+
+    #imagen-sucursales{
         width: 20%;
+    }
+
+    .menu-sucursales{
+        float: right;
+        width: 75%;
+    }
+
+    .menu-sucursales nav{
+        width: 80%;
+    }
+
+
+    /*===============
+        Promociones Menu
+        =============== */
+    #imagen-promociones{
+        width: 20%;
+    }
+
+    .menu-promociones{
+        float: right;
+        width: 75%;
+    }
+
+    .menu-promociones nav{
+        width: 80%;
+    }
+/* ===============
+    Maximal Main
+   =============== */
+
+   .wrapper-article article {
+        padding: 0px 0px 0px 6%;
+        margin: 0px;
+        width: 45%;
+    }   
+
+    .divArticulo article{
+        padding: 0px 25% 0px 25%;
+    }
+
+    .main aside {
+        margin-right: 5%;
+    }
+
+    /*  Articulo Main */
+    .divArticulo{
+        width: 100%;
+        height: auto;
+    }
+
+    .divArticulo h1{
+        text-align: center;
+    }
+
+    .wrapper-article-articulo{
+        margin-left: 0px;
+    }
+
+    .wrapper-article-articulo h1{
+        padding-left: 0px;
+    }
+
+    /*===============
+        Sucursales Main
+        =============== */
+    .main-container-sucursales{
+        height: 450px;
+        margin-left: 12%;
+    }
+
+    .sucursales-container{
+        float: left;
+        margin: 50px 30px 0px 30px;
+    }
+    /*===============
+        Contacto Main
+        =============== */
+
+    .main-container-contactenos{
+        font-size: 18px;
+        color: white;
+        background-color: #6633FF;
+        width: 40%;
+        margin: 5% auto;
+        border: 2px solid black;
+        border-radius: 15px;
+        box-shadow: 2px 2px 2px black;
+    }
+
+    .primera-sucursal-contacto{
+        float: right;
+        margin: -42% 13% 0% 0%;
+        display: block;
+        float: right;
+        text-align: center;
+    }
+
+    .main-container-contactenos{
+        width: 95%;
+    }
+
+    #formulario{
+        padding: 2%;
+        width: 40%;
+        border: 1px solid black;
+        margin: 5%;
     }
 }
 
